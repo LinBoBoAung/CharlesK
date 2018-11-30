@@ -1,111 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-
-
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#ffffff"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_arrow_back_black_24dp"/>
-
-                <TextView
-                    android:id="@+id/tv_newin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="N E W  I N"
-                    android:layout_marginLeft="150dp"
-                    />
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginEnd="20dp"
-                    android:src="@drawable/blackbag" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="P O I N T E D  F L A T  M U L ES"
-                    android:layout_below="@id/tv_newin"
-                    android:layout_marginLeft="84dp"
-                    android:layout_marginTop="20dp"/>
-
-
-            </RelativeLayout>
-
-        </android.support.v7.widget.Toolbar>
-
-    </android.support.design.widget.AppBarLayout>
-
-
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_height="match_parent">
+
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.Toolbar>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_back_black_24dp" />
+
+            <TextView
+                android:id="@+id/tv_newin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="N E W  I N" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/blackbag" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_newin"
+                android:layout_marginLeft="84dp"
+                android:layout_marginTop="20dp"
+                android:text="P O I N T E D  F L A T  M U L ES" />
+
+
+        </RelativeLayout>
+
+
+
+
+        <RelativeLayout
+            android:id="@+id/rv_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar">
+
+        </RelativeLayout>
 
 
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="258dp"
-            android:layout_marginRight="20dp"
-            android:drawableLeft="@drawable/ic_info_outline_black_24dp"
-            android:text="INFO"
-            android:background="#ffffff"
-            android:layout_marginTop="20dp"/>
-
-
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_detail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
-        </android.support.v7.widget.RecyclerView>
-
-        <TextView
-            android:id="@+id/tv_like"
+            android:id="@+id/btn_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="You May Also Like"
-            android:layout_below="@id/rv_detail"/>
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="86dp"
+            android:background="#ffffff"
+            android:drawableLeft="@drawable/ic_info_outline_black_24dp"
+            android:text="INFO" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_like"
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_like"
-            android:layout_marginTop="16dp">
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="168dp"
+            android:background="#000000"
+            android:rotation="-90"
+            android:text="COLORS"
+            android:textColor="#ffffff" />
 
-        </android.support.v7.widget.RecyclerView>
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/rv_one">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                </android.support.v7.widget.RecyclerView>
+
+                <TextView
+                    android:id="@+id/tv_like"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rv_detail"
+                    android:layout_centerInParent="true"
+                    android:text="You May Also Like"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_like"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_like"
+                    android:layout_marginTop="16dp">
+
+                </android.support.v7.widget.RecyclerView>
+
+
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
 
 
 
     </RelativeLayout>
 
+    <include
+        android:id="@+id/vp_empty"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        layout="@layout/view_pod_empty"
+        android:visibility="gone"/>
 
 
-</android.support.design.widget.CoordinatorLayout>
+</FrameLayout>
+
+
+
+
+

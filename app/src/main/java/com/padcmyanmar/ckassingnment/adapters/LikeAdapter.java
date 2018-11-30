@@ -7,31 +7,50 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.padcmyanmar.ckassingnment.R;
+import com.padcmyanmar.ckassingnment.data.vos.getNewProductVO;
 import com.padcmyanmar.ckassingnment.delegate.ItemDelegate;
+import com.padcmyanmar.ckassingnment.viewholders.DetailViewHolder;
 import com.padcmyanmar.ckassingnment.viewholders.ItemViewHolder;
+import com.padcmyanmar.ckassingnment.viewholders.LikeViewHolder;
 
-public class LikeAdapter extends RecyclerView.Adapter {
+import java.util.ArrayList;
+import java.util.List;
+
+public class LikeAdapter extends RecyclerView.Adapter<LikeViewHolder> {
     private ItemDelegate mItemDelegate;
+    private List<getNewProductVO> mProduct;
 
-    public LikeAdapter(ItemDelegate mItemDelegate) {
-        this.mItemDelegate = mItemDelegate;
+    public LikeAdapter(ItemDelegate ItemDelegate) {
+        mItemDelegate = ItemDelegate;
+        mProduct = new ArrayList<>();
+
     }
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater= LayoutInflater.from(parent.getContext());
-        View view=layoutInflater.inflate(R.layout.view_holder_newin,parent,false);
-        return new ItemViewHolder(view,mItemDelegate);
+    public LikeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        View view = layoutInflater.inflate(R.layout.view_holder_like, parent, false);
+        return new LikeViewHolder(view, mItemDelegate);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull LikeViewHolder holder, int position) {
+        holder.setItemData(mProduct.get(position));
 
     }
+
+
 
     @Override
     public int getItemCount() {
-        return 8;
+        return (mProduct.size());
+    }
+
+    public void setProductList(List<getNewProductVO> product) {
+        mProduct = product;
+        notifyDataSetChanged();
     }
 }
+
+

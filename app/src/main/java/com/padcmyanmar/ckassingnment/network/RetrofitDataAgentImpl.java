@@ -3,6 +3,7 @@ package com.padcmyanmar.ckassingnment.network;
 import android.util.Log;
 
 import com.padcmyanmar.ckassingnment.events.ApiErrorEvent;
+import com.padcmyanmar.ckassingnment.events.SuccessFoceRefreshGetItemEvent;
 import com.padcmyanmar.ckassingnment.events.SuccessGetItemsEvent;
 import com.padcmyanmar.ckassingnment.utils.ItemConstants;
 
@@ -52,7 +53,7 @@ public class RetrofitDataAgentImpl implements ItemDataAgent {
     }
 
     @Override
-    public void loadItemList(int page, String accessToken)
+    public void loadItemList(int page, String accessToken, final boolean isForceRefresh)
     {
        Call<GetItemResponse> loadItemCall= mItemApi.loadItemList(accessToken,page);
        loadItemCall.enqueue(new Callback<GetItemResponse>() {
@@ -62,6 +63,11 @@ public class RetrofitDataAgentImpl implements ItemDataAgent {
                GetItemResponse itemResponse=response.body();
                if(itemResponse!=null && itemResponse.isResponseOK())
                {
+                   if(isForceRefresh)
+                   {
+                       SuccessFoceRefreshGetItemEvent event=new SuccessFoceRefreshGetItemEvent(GetItemResponse.getNewProduct());
+                       EventBus.getDefault().post(event);
+                   }
                    Log.i("Retro",itemResponse.getGetNewProducts().size()+"");
                    SuccessGetItemsEvent event=new SuccessGetItemsEvent(itemResponse.getGetNewProducts());
                    EventBus.getDefault().post(event);
@@ -70,9 +76,10 @@ public class RetrofitDataAgentImpl implements ItemDataAgent {
                {
                    if(itemResponse==null)
                    {
-                       ApiErrorEvent event=new ApiErrorEvent("Empty Respons in Network Call");
+                       ApiErrorEvent event=new ApiErrorEvent("Empty Response in Network Call");
                        EventBus.getDefault().post(event);
                    }
+
                }
 
 

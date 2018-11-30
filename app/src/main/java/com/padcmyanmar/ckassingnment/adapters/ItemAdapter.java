@@ -49,6 +49,13 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemViewHolder> {
         notifyDataSetChanged();
     }
 
+//    public void appendItemList(List<getNewProductVO> product)
+//
+//    {
+//        mProduct.addAll(product);
+//
+//    }
+
 
 
 }

@@ -7,7 +7,8 @@ import java.util.List;
 
 public class GetItemResponse
 {
-@SerializedName("code")
+    public static List<getNewProductVO> getNewProduct;
+    @SerializedName("code")
   private  int code;
 @SerializedName("message")
   private   String message;
@@ -20,6 +21,10 @@ public class GetItemResponse
 
 @SerializedName("newProducts")
 private List<getNewProductVO> getNewProducts;
+
+    public static List<getNewProductVO> getNewProduct() {
+        return getNewProduct;
+    }
 
     public int getCode() {
         return code;

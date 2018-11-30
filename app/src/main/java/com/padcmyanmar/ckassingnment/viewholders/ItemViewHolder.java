@@ -26,31 +26,32 @@ public class ItemViewHolder extends RecyclerView.ViewHolder {
 
     private ItemDelegate mItemDelegate;
     private getNewProductVO mProduct;
+    private View view;
 
     public ItemViewHolder(View itemView, ItemDelegate itemDelegate) {
         super(itemView);
-        ButterKnife.bind(this,itemView);
-        mItemDelegate=itemDelegate;
+        ButterKnife.bind(this, itemView);
+        mItemDelegate = itemDelegate;
+        view = itemView;
 
-
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mItemDelegate.onTapItem(mProduct);
-
-            }
-        });
 
     }
- public void setItemData(getNewProductVO product)
-   {
-//     mProduct=product;
-//     itemName.setText(mProduct.getProductTitle().toString());
+
+    public void setItemData(final getNewProductVO product) {
+        mProduct = product;
+        itemName.setText(mProduct.getProductTitle().toString());
 
         Glide.with(ivFirst.getContext())
                 .load(product.getProductImage())
                 .into(ivFirst);
 
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mItemDelegate.onTapItem(product);
+            }
+        });
 
-}
+
+    }
 }
